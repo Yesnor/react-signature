@@ -87,7 +87,9 @@ export default function Type() {
         >
           <div
             className="modal-content"
-            // onClick={() => setIsModalOpen(isModalOpen)}
+            style={
+              signature ? { pointerEvents: "none" } : { pointerEvents: "auto" }
+            }
           >
             <div className="modal-body">
               <canvas
