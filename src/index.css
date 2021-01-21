@@ -16,6 +16,7 @@ body {
 *::after {
   box-sizing: border-box;
 }
+
 a {
   color: black;
   text-decoration: none;
@@ -80,6 +81,9 @@ a:hover {
 }
 .buttons button {
   width: 100px;
+}
+.buttons button:focus {
+  box-shadow: none !important;
 }
 
 .drawSection h5 span,

@@ -1,8 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import CanvasDraw from "react-canvas-draw";
 
 export default function Canvas() {
   const canvas = useRef();
+  const [brushLine, setBrushLine] = useState(1);
+  const [brushColor, setBrushColor] = useState("#000000");
+
   /* Canvas Default Props */
 
   // const defaultProps = {
@@ -31,6 +34,8 @@ export default function Canvas() {
     anchor.click();
     anchor.remove();
   };
+
+  useEffect(() => {}, []);
   return (
     <div id="canvas" className="drawSection__canvas">
       <CanvasDraw
@@ -41,8 +46,9 @@ export default function Canvas() {
         }}
         hideInterface
         hideGrid
-        brushRadius={3}
-        brushColor="black"
+        brushRadius={brushLine}
+        brushColor={brushColor}
+        canvasWidth={550}
       />
 
       <div className="buttons d-flex justify-content-evenly mt-3">
@@ -63,6 +69,44 @@ export default function Canvas() {
         >
           Clear
         </button>
+      </div>
+      <div className="brush-range container mt-3">
+        <div className="container">
+          <strong>
+            <label htmlFor="brush-range" className="form-label">
+              Brush radius: {brushLine}
+            </label>
+          </strong>
+        </div>
+        <input
+          type="range"
+          className="form-range w-50"
+          min="1"
+          max="5"
+          step="1"
+          id="brush-range"
+          value={brushLine}
+          onChange={(e) => {
+            setBrushLine(+e.target.value);
+          }}
+        />
+      </div>
+      <div className="container brush-color">
+        <div className="container">
+          <strong>
+            <label htmlFor="brush-color" className="form-label">
+              Brush color: {brushColor}
+            </label>
+          </strong>
+        </div>
+        <input
+          type="color"
+          className="form-range w-50"
+          id="brush-color"
+          onChange={(e) => {
+            setBrushColor(e.target.value);
+          }}
+        />
       </div>
     </div>
   );

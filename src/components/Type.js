@@ -12,6 +12,7 @@ export default function Type() {
   };
   const modalWidth = 466;
   const modalHeight = 306;
+  const defaultSignature = "Your Signature";
 
   const textRef = useRef();
   const [signature, setSignature] = useState("");
@@ -54,9 +55,6 @@ export default function Type() {
   };
 
   useEffect(() => {
-    console.log("Is Modal Open: ", isModalOpen);
-    console.log("Signature: ", signature);
-
     if (isModalOpen) {
       typeSignature(canvasFont);
     } else {
@@ -79,12 +77,7 @@ export default function Type() {
         aria-hidden="true"
         onClick={() => setIsModalOpen(!isModalOpen)}
       >
-        <div
-          className="modal-dialog modal-dialog-centered"
-          onClick={() => {
-            console.log("Modal dialog clicked");
-          }}
-        >
+        <div className="modal-dialog modal-dialog-centered">
           <div
             className="modal-content"
             style={
@@ -104,6 +97,7 @@ export default function Type() {
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"
                 onClick={() => setIsModalOpen(!isModalOpen)}
+                style={{ pointerEvents: "auto" }}
               >
                 Close
               </button>
@@ -115,6 +109,7 @@ export default function Type() {
                   setIsModalOpen(!isModalOpen);
                   saveImage(textRef.current);
                 }}
+                style={{ pointerEvents: "auto" }}
               >
                 Download
               </button>
@@ -126,9 +121,8 @@ export default function Type() {
       <Link to="/">
         <h5 className="mt-2">
           <span>
-            <strong>&#8592;</strong>
+            <strong>&#8592;</strong> Go Back
           </span>
-          Go Back
         </h5>
       </Link>
       <div className="container d-flex flex-column align-items-center">
@@ -155,7 +149,7 @@ export default function Type() {
               }
             }}
           >
-            <h1>{signature}</h1>
+            <h1>{signature || defaultSignature}</h1>
           </div>
 
           <div
@@ -171,7 +165,7 @@ export default function Type() {
             className="signature "
             style={{ fontFamily: fonts.type2 }}
           >
-            <h1>{signature}</h1>
+            <h1>{signature || defaultSignature}</h1>
           </div>
 
           <div
@@ -187,7 +181,7 @@ export default function Type() {
             }}
             style={{ fontFamily: fonts.type3 }}
           >
-            <h1>{signature}</h1>
+            <h1>{signature || defaultSignature}</h1>
           </div>
           <div
             type="button"
@@ -202,7 +196,7 @@ export default function Type() {
             }}
             style={{ fontFamily: fonts.type4 }}
           >
-            <h1>{signature}</h1>
+            <h1>{signature || defaultSignature}</h1>
           </div>
           <div
             type="button"
@@ -217,7 +211,7 @@ export default function Type() {
             }}
             style={{ fontFamily: fonts.type5 }}
           >
-            <h1>{signature}</h1>
+            <h1>{signature || defaultSignature}</h1>
           </div>
           <div
             type="button"
@@ -232,7 +226,7 @@ export default function Type() {
             }}
             style={{ fontFamily: fonts.type6 }}
           >
-            <h1>{signature}</h1>
+            <h1>{signature || defaultSignature}</h1>
           </div>
         </div>
       </div>

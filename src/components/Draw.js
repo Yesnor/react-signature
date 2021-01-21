@@ -8,9 +8,8 @@ export default function Draw() {
       <Link to="/">
         <h5 className="mt-2">
           <span>
-            <strong>&#8592;</strong>
+            <strong>&#8592;</strong> Go Back
           </span>
-          Go Back
         </h5>
       </Link>
       <div className="container d-flex flex-column align-items-center">
