@@ -26,6 +26,14 @@ export default function Canvas() {
   //   hideInterface: false,
   // };
 
+  //   Functions
+  // Useful functions that you can call, e.g. when having a reference to this component:
+
+  // getSaveData() returns the drawing's save-data as a stringified object
+  // loadSaveData(saveData: String, immediate: Boolean) loads a previously saved drawing using the saveData string, as well as an optional boolean flag to load it immediately, instead of live-drawing it.
+  // clear() clears the canvas completely
+  // undo() removes the latest change to the drawing. This includes everything drawn since the last MouseDown event.
+
   const saveImage = (canvas) => {
     const data = canvas.toDataURL("image/png");
     const anchor = document.createElement("a");
@@ -55,11 +63,23 @@ export default function Canvas() {
         <button
           id="downloadImage"
           onClick={() => {
-            saveImage(canvas.current.canvas.drawing);
+            console.log(canvas.current.lines);
+            canvas.current.undo();
+            console.log(canvas.current.lines);
+
+            // saveImage(canvas.current.canvas.drawing);
           }}
           className="btn btn-success"
         >
           Download
+        </button>
+        <button
+          onClick={() => {
+            canvas.current.undo();
+          }}
+          className="btn btn-warning"
+        >
+          Undo
         </button>
         <button
           onClick={() => {
