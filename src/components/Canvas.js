@@ -63,11 +63,7 @@ export default function Canvas() {
         <button
           id="downloadImage"
           onClick={() => {
-            console.log(canvas.current.lines);
-            canvas.current.undo();
-            console.log(canvas.current.lines);
-
-            // saveImage(canvas.current.canvas.drawing);
+            saveImage(canvas.current.canvas.drawing);
           }}
           className="btn btn-success"
         >
