@@ -45,7 +45,10 @@ export default function Canvas() {
 
   useEffect(() => {}, []);
   return (
-    <div id="canvas" className="drawSection__canvas">
+    <div
+      id="canvas"
+      className="drawSection__canvas d-flex flex-column justify-content-center align-items-center"
+    >
       <CanvasDraw
         ref={canvas}
         style={{
@@ -62,6 +65,7 @@ export default function Canvas() {
       <div className="buttons d-flex justify-content-evenly mt-3">
         <button
           id="downloadImage"
+          t
           onClick={() => {
             saveImage(canvas.current.canvas.drawing);
           }}
@@ -86,7 +90,7 @@ export default function Canvas() {
           Clear
         </button>
       </div>
-      <div className="brush-range container mt-3">
+      <div className="brush-range w-50 mt-3 d-flex flex-column justify-content-center align-items-center">
         <div className="container">
           <strong>
             <label htmlFor="brush-range" className="form-label">
@@ -94,20 +98,22 @@ export default function Canvas() {
             </label>
           </strong>
         </div>
-        <input
-          type="range"
-          className="form-range w-50"
-          min="1"
-          max="5"
-          step="1"
-          id="brush-range"
-          value={brushLine}
-          onChange={(e) => {
-            setBrushLine(+e.target.value);
-          }}
-        />
+        <div className="container">
+          <input
+            type="range"
+            className="form-range w-50"
+            min="1"
+            max="5"
+            step="1"
+            id="brush-range"
+            value={brushLine}
+            onChange={(e) => {
+              setBrushLine(+e.target.value);
+            }}
+          />
+        </div>
       </div>
-      <div className="container brush-color">
+      <div className="brush-color w-50 d-flex flex-column justify-content-center align-items-center">
         <div className="container">
           <strong>
             <label htmlFor="brush-color" className="form-label">
@@ -115,14 +121,16 @@ export default function Canvas() {
             </label>
           </strong>
         </div>
-        <input
-          type="color"
-          className="form-range w-50"
-          id="brush-color"
-          onChange={(e) => {
-            setBrushColor(e.target.value);
-          }}
-        />
+        <div className="container">
+          <input
+            type="color"
+            className="form-range w-50"
+            id="brush-color"
+            onChange={(e) => {
+              setBrushColor(e.target.value);
+            }}
+          />
+        </div>
       </div>
     </div>
   );
