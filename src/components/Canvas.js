@@ -59,7 +59,7 @@ export default function Canvas() {
         hideGrid
         brushRadius={brushLine}
         brushColor={brushColor}
-        canvasWidth={550}
+        canvasWidth={450}
       />
 
       <div className="buttons d-flex justify-content-evenly mt-3">
